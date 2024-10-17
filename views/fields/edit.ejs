@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Data Lapangan</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Edit Data Lapangan</h1>
+    <form action="/fields/<%= field._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+      <div>
+        <label for="name">Nama Lapangan:</label>
+        <input type="text" id="name" name="name" value="<%= field.name %>" required>
+      </div>
+      <div>
+        <label for="pricePerHour">Harga per Jam:</label>
+        <input type="number" id="pricePerHour" name="pricePerHour" value="<%= field.pricePerHour %>" required>
+      </div>
+      <div>
+        <label for="photo">Foto Lapangan (Biarkan kosong jika tidak ingin mengganti foto):</label>
+        <input type="file" id="photo" name="photo">
+      </div>
+      <button type="submit">Simpan Perubahan</button>
+    </form>
+  </div>
+</body>
+</html>

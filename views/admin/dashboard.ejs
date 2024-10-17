@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 800px;
+      width: 100%;
+    }
+    h1 {
+      margin-bottom: 20px;
+      animation: move 3s infinite linear;
+      display: inline-block;
+    }
+    @keyframes move {
+      0% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(20px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .button, .logout-button {
+      margin: 10px;
+      padding: 10px 30px;
+      text-decoration: none;
+      color: white;
+      background-color: #00796b;
+      border-radius: 5px;
+      transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      flex: 1 1 calc(25% - 20px); /* Mengatur ukuran tombol agar memenuhi baris */
+      box-sizing: border-box;
+    }
+    .button:hover, .logout-button:hover {
+      background-color: #004d40;
+      transform: scale(1.05);
+      opacity: 0.9;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      color: white;
+    }
+    .button:active, .logout-button:active {
+      transform: scale(0.95);
+      box-shadow: none;
+    }
+    .logout-button {
+      display: block;
+      margin: 10px auto;
+      background-color: #ff5252;
+    }
+    .logout-button:hover {
+      background-color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Selamat Datang di Dashboard Admin Futsal</h1>
+    <div class="button-container">
+      <a href="/members/new" class="button"><span>Tambah Data Member</span></a>
+      <a href="/fields/new" class="button"><span>Tambah Data Lapangan</span></a>
+      <a href="/bookings/new" class="button"><span>Tambah Data Booking</span></a>
+      <a href="/transactions/new" class="button"><span>Tambah Data Transaksi</span></a>
+      <a href="/members" class="button"><span>Lihat Data Member</span></a>
+      <a href="/fields" class="button"><span>Lihat Data Lapangan</span></a>
+      <a href="/bookings" class="button"><span>Lihat Data Booking</span></a>
+      <a href="/transactions" class="button"><span>Lihat Data Transaksi</span></a>
+    </div>
+    <form action="/admin/logout" method="POST" class="logout-form">
+      <button type="submit" class="logout-button"><span>Logout</span></button>
+    </form>
+  </div>
+</body>
+</html>

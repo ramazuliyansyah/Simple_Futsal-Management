@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tambah Booking</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Tambah Booking</h1>
+    <form action="/bookings" method="POST">
+      <div>
+        <label for="field">Lapangan</label>
+        <select name="field" id="field" required>
+          <% fields.forEach(field => { %>
+            <option value="<%= field._id %>"><%= field.name %></option>
+          <% }) %>
+        </select>
+      </div>
+      <div>
+        <label for="member">Member</label>
+        <select name="member" id="member" required>
+          <% members.forEach(member => { %>
+            <option value="<%= member._id %>"><%= member.name %></option>
+          <% }) %>
+        </select>
+      </div>
+      <div>
+        <label for="date">Tanggal</label>
+        <input type="date" name="date" id="date" required>
+      </div>
+      <div>
+        <label for="time">Jam</label>
+        <input type="time" name="time" id="time" required>
+      </div>
+      <div>
+        <label for="hours">Jumlah Jam</label>
+        <input type="number" name="hours" id="hours" required>
+      </div>
+      <button type="submit">Simpan</button>
+    </form>
+  </div>
+</body>
+</html>

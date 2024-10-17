@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Transaksi</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #e0f7fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 90%;
+        max-width: 1200px;
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      table th,
+      table td {
+        padding: 10px;
+        border: 1px solid #ccc;
+        text-align: left;
+      }
+      table th {
+        background-color: #f2f2f2;
+      }
+      .print-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .print-button:hover {
+        background-color: #0056b3;
+      }
+      .print-area {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Data Transaksi</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Lapangan</th>
+            <th>Member</th>
+            <th>Tanggal Booking</th>
+            <th>Jam Booking</th>
+            <th>Jumlah Pembayaran</th>
+            <th>Tanggal Transaksi</th>
+            <th>Metode Pembayaran</th>
+            <th>Status Pembayaran</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% transactions.forEach(transaction => { %> <% if
+          (transaction.booking) { %>
+          <tr>
+            <td><%= transaction.booking.field.name %></td>
+            <td><%= transaction.booking.member.name %></td>
+            <td><%= transaction.booking.date.toDateString() %></td>
+            <td><%= transaction.booking.time %></td>
+            <td>
+              <%= new Intl.NumberFormat('id-ID', { style: 'currency', currency:
+              'IDR' }).format(transaction.amount) %>
+            </td>
+            <td><%= transaction.date.toDateString() %></td>
+            <td><%= transaction.paymentMethod %></td>
+            <td><%= transaction.paymentStatus %></td>
+            <td>
+              <button
+                class="print-button"
+                onclick="printTransaction('<%= transaction.id %>')"
+              >
+                Cetak
+              </button>
+              <div id="print-area-<%= transaction.id %>" class="print-area">
+                <h1>Data Transaksi</h1>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Lapangan</th>
+                      <th>Member</th>
+                      <th>Tanggal Booking</th>
+                      <th>Jam Booking</th>
+                      <th>Jumlah Pembayaran</th>
+                      <th>Tanggal Transaksi</th>
+                      <th>Metode Pembayaran</th>
+                      <th>Status Pembayaran</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><%= transaction.booking.field.name %></td>
+                      <td><%= transaction.booking.member.name %></td>
+                      <td><%= transaction.booking.date.toDateString() %></td>
+                      <td><%= transaction.booking.time %></td>
+                      <td>
+                        <%= new Intl.NumberFormat('id-ID', { style: 'currency',
+                        currency: 'IDR' }).format(transaction.amount) %>
+                      </td>
+                      <td><%= transaction.date.toDateString() %></td>
+                      <td><%= transaction.paymentMethod %></td>
+                      <td><%= transaction.paymentStatus %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </td>
+          </tr>
+          <% } %> <% }) %>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function printTransaction(id) {
+        const printArea = document.getElementById("print-area-" + id).innerHTML;
+        const originalContents = document.body.innerHTML;
+        document.body.innerHTML = printArea;
+        window.print();
+        document.body.innerHTML = originalContents;
+        location.reload(); // reload the page to restore the original content
+      }
+    </script>
+  </body>
+</html>

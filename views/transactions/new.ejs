@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tambah Transaksi</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Tambah Transaksi</h1>
+    <form action="/transactions" method="POST">
+      <div>
+        <label for="booking">Booking:</label>
+        <select id="booking" name="booking" required>
+          <% bookings.forEach(booking => { %>
+            <option value="<%= booking._id %>">
+              <%= booking.member.name %> - <%= booking.field.name %> - <%= booking.date.toDateString() %> - <%= booking.time %>
+            </option>
+          <% }) %>
+        </select>
+      </div>
+      <div>
+        <label for="amount">Jumlah:</label>
+        <input type="number" id="amount" name="amount" required>
+      </div>
+      <div>
+        <label for="date">Tanggal:</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+      <div>
+        <label for="paymentMethod">Metode Pembayaran:</label>
+        <select id="paymentMethod" name="paymentMethod" required>
+          <option value="Cash">Cash</option>
+          <option value="Transfer">Transfer</option>
+        </select>
+      </div>
+      <div>
+        <label for="paymentStatus">Status Pembayaran:</label>
+        <select id="paymentStatus" name="paymentStatus" required>
+          <option value="Pending">Pending</option>
+          <option value="Completed">Completed</option>
+        </select>
+      </div>
+      <button type="submit">Tambah</button>
+    </form>
+  </div>
+</body>
+</html>

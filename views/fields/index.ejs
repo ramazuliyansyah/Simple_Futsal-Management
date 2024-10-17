@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Lapangan</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #e0f7fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      width: 80%;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 30px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #00796b;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      font-size: 16px;
+    }
+    th {
+      background-color: #b2dfdb;
+      color: #00796b;
+    }
+    a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    a:hover {
+      text-decoration: underline;
+      color: #004d40;
+    }
+    .button {
+      display: inline-block;
+      padding: 6px 12px;
+      text-decoration: none;
+      color: white;
+      background-color: #00796b;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      margin-right: 5px;
+    }
+    .button:hover {
+      background-color: #004d40;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Data Lapangan</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Harga per Jam</th>
+          <th>Foto</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% fields.forEach(field => { %>
+          <tr>
+            <td><%= field.name %></td>
+            <td><%= field.pricePerHour %></td>
+            <td>
+              <% if (field.photo) { %>
+                <img src="/uploads/<%= field.photo %>" alt="<%= field.name %>" style="max-width: 150px; height: auto; border-radius: 5px;">
+              <% } else { %>
+                <p>Belum ada foto</p>
+              <% } %>
+            </td>
+            <td>
+              <a href="/fields/<%= field._id %>/edit" class="button">Edit</a>
+              <form action="/fields/<%= field._id %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit" class="button" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

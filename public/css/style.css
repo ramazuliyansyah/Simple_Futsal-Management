@@ -1,0 +1,152 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #e0f7fa;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 80%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #00796b;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+form div {
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #00796b;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  padding: 12px 20px;
+  background-color: #00796b;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+button:hover {
+  background-color: #004d40;
+  transform: scale(1.05);
+  opacity: 0.9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  transform: scale(0.95);
+  box-shadow: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  font-size: 16px;
+}
+
+th {
+  background-color: #b2dfdb;
+  color: #00796b;
+}
+
+a {
+  color: #00796b;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #004d40;
+}
+
+/* Custom button styles */
+.button {
+  display: inline-block;
+  margin: 10px 5px;
+  padding: 10px 20px;
+  color: white;
+  background-color: #00796b;
+  border-radius: 5px;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+}
+
+.button:hover {
+  background-color: #004d40;
+  transform: scale(1.05);
+  opacity: 0.9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+  transform: scale(0.95);
+  box-shadow: none;
+}
+
+.logout-button {
+  display: block;
+  margin: 10px auto;
+  background-color: #ff5252;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f;
+}
+
+/* Ensuring no text underline on buttons */
+.button span, .logout-button span {
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+}
+
+form {
+  display: inline;
+}
